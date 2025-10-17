@@ -18,7 +18,7 @@ if uploaded_file is not None:
     # Operation selection
     operation = st.selectbox(
         "Select Operation",
-        ("Blurring / Smoothing", "Edge Detection", "Morphological Operations")
+        ("Blurring / Smoothing", "Edge Detection", "Morphological Operations", "Thresholding")
     )
 
     # ---------------------------------
@@ -67,3 +67,38 @@ if uploaded_file is not None:
             processed = cv2.morphologyEx(gray, cv2.MORPH_CLOSE, kernel)
 
         st.image(processed, caption=f"{morph_type} (Kernel={k}x{k})", use_container_width=True)
+    # ---------------------------------
+    # 4️⃣ THRESHOLDING
+    # ---------------------------------
+    elif operation == "Thresholding":
+        thresh_type = st.selectbox("Choose the type of thresholding", ("Simple Thresholding","Adaptive Thresholding", "Otsu's Binarization"))
+        
+        if thresh_type == "Simple Thresholding":
+            thresh_point = st.slider("Threshold", 0, 255, 127)
+            thresh_val = st.radio("Choose thresholding type", 
+            ("Binary", "Binary Inverse", "Truncate", "To Zero"))
+            if thresh_val == "Binary":
+                _, processed = cv2.threshold(gray, thresh_point, 255, cv2.THRESH_BINARY)
+            elif thresh_val == "Binary Inverse":
+                _, processed = cv2.threshold(gray, thresh_point, 255, cv2.THRESH_BINARY_INV)
+            elif thresh_val == "Truncate":
+                _, processed = cv2.threshold(gray, thresh_point, 255, cv2.THRESH_TRUNC)
+            elif thresh_val == "To Zero":
+                 _, processed = cv2.threshold(gray, thresh_point, 255, cv2.THRESH_TOZERO)
+            # elif thresh_val == "To Zero Inverse":
+            #     _, processed = cv2.threshold(gray, 127, 255, cv2.THRESH_TOZERO_INV)
+            else:
+                pass
+        # this opperator is used to compare two values and return a boolean value
+        elif thresh_type == "Otsu's Binarization":
+           _, processed = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        elif thresh_type == "Adaptive Thresholding":   
+            k_size_low = st.slider("Region size", 1, 100, 21, step = 2)
+            k_size_high = st.slider("Tuning knob", -10, 35, 30)
+            processed= cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, k_size_low, k_size_high)
+        else:
+            pass    
+        if thresh_type == "Simple Thresholding":    
+            st.image(processed, caption=f"{thresh_val} Thresholding", use_container_width=True)    
+        else:
+            st.image(processed, caption=f"{thresh_type} Thresholding", use_container_width=True)     
