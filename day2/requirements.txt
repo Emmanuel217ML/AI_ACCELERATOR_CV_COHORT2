@@ -165,7 +165,7 @@ locket @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/locket_17
 lxml==5.3.0
 lz4 @ file:///C:/b/abs_8ep7mb2x8a/croot/lz4_1736369996037/work
 Markdown @ file:///C:/b/abs_f9hbi7znfr/croot/markdown_1746114643651/work
-markdown-it-py @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/markdown-it-py_1729039967492/work
+# markdown-it-py @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/markdown-it-py_1729039967492/work
 MarkupSafe @ file:///C:/b/abs_a0ma7ge0jc/croot/markupsafe_1738584052792/work
 matplotlib==3.10.0
 matplotlib-inline==0.1.7
@@ -247,7 +247,7 @@ pydocstyle @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/pydoc
 pyerfa @ file:///C:/b/abs_35x4fn08_4/croot/pyerfa_1738083087918/work
 pyflakes @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/pyflakes_1729051360949/work
 PyGithub @ file:///C:/Users/dev-admin/buildout/perseverance-python-buildout/croot/pygithub_1731745080304/work
-Pygments==2.19.2
+#Pygments==2.19.2
 PyJWT @ file:///C:/Users/dev-admin/buildout/croot/pyjwt_1739559988030/work
 pylint @ file:///C:/b/abs_52tcgdpqsk/croot/pylint_1743709218105/work
 pylint-venv @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/pylint-venv_1729062196487/work
